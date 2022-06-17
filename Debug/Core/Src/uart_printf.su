@@ -1,0 +1,2 @@
+../Core/Src/uart_printf.c:21:6:UART_Printf	272	static
+../Core/Src/uart_printf.c:30:6:UART_Printf_Dbg	272	static
