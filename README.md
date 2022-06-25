@@ -7,10 +7,10 @@
  
 # Working demonstration
 ## Live Expressions
-<img src="/Images/intsenstmp_live_expression.png" width="700">
+<img src="/Images/intsenstmp_live_expression.png" width="500">
 
 ## Cube Monitor
-<img src="/Images/watch_var_cubemon.gif" width="700">
+<img src="/Images/watch_var_cubemon.gif" width="500">
 
 ## UART Debug
-<img src="/Images/colsole_shell_serial.png" width="700">
+<img src="/Images/colsole_shell_serial.png" width="500">
