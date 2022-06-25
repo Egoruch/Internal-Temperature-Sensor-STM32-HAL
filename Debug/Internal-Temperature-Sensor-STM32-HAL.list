@@ -37,13 +37,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  00018c40  00000000  00000000  000345e8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   000117ab  00000000  00000000  0004d228  2**0
+ 17 .debug_line   000117ad  00000000  00000000  0004d228  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    0009aa95  00000000  00000000  0005e9d3  2**0
+ 18 .debug_str    0009aa95  00000000  00000000  0005e9d5  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000050  00000000  00000000  000f9468  2**0
+ 19 .comment      00000050  00000000  00000000  000f946a  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  0000535c  00000000  00000000  000f94b8  2**2
+ 20 .debug_frame  0000535c  00000000  00000000  000f94bc  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1370,17 +1370,18 @@ int main(void)
   HAL_TIM_Base_Start(&htim3); /* This timer starts ADC conversion */
  8001032:	4819      	ldr	r0, [pc, #100]	; (8001098 <main+0x90>)
  8001034:	f002 fd70 	bl	8003b18 <HAL_TIM_Base_Start>
-
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
 		if (Flg.ADCCMPLT) /* Conversion completed, do calculations */
  8001038:	4b18      	ldr	r3, [pc, #96]	; (800109c <main+0x94>)
  800103a:	781b      	ldrb	r3, [r3, #0]
  800103c:	2b00      	cmp	r3, #0
  800103e:	d0fb      	beq.n	8001038 <main+0x30>
 		{
+
 			/* Temperature Sensor ADC-value, Reference Voltage ADC-value (if use) */
 			Adc.IntSensTmp = TMPSENSOR_getTemperature(Adc.Raw[1], Adc.Raw[0]);
  8001040:	4b13      	ldr	r3, [pc, #76]	; (8001090 <main+0x88>)
@@ -1750,9 +1751,9 @@ static void MX_TIM3_Init(void)
  8001260:	4b1d      	ldr	r3, [pc, #116]	; (80012d8 <MX_TIM3_Init+0x94>)
  8001262:	4a1e      	ldr	r2, [pc, #120]	; (80012dc <MX_TIM3_Init+0x98>)
  8001264:	601a      	str	r2, [r3, #0]
-  htim3.Init.Prescaler = 840-2;
+  htim3.Init.Prescaler = 840-1;
  8001266:	4b1c      	ldr	r3, [pc, #112]	; (80012d8 <MX_TIM3_Init+0x94>)
- 8001268:	f240 3246 	movw	r2, #838	; 0x346
+ 8001268:	f240 3247 	movw	r2, #839	; 0x347
  800126c:	605a      	str	r2, [r3, #4]
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
  800126e:	4b1a      	ldr	r3, [pc, #104]	; (80012d8 <MX_TIM3_Init+0x94>)
@@ -2034,6 +2035,8 @@ static void MX_GPIO_Init(void)
 08001418 <HAL_ADC_ConvCpltCallback>:
 
 /* USER CODE BEGIN 4 */
+
+
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
  8001418:	b480      	push	{r7}
@@ -2961,6 +2964,7 @@ double TMPSENSOR_getTemperature(uint16_t adc_sensor, uint16_t adc_intref){
  800186e:	80bb      	strh	r3, [r7, #4]
 
 #if(TMPSENSOR_USE_INTREF)
+
 	double intref_vol = (TMPSENSOR_ADCMAX*TMPSENSOR_ADCVREFINT)/adc_intref;
  8001870:	88bb      	ldrh	r3, [r7, #4]
  8001872:	4618      	mov	r0, r3
@@ -2973,6 +2977,7 @@ double TMPSENSOR_getTemperature(uint16_t adc_sensor, uint16_t adc_intref){
  8001886:	4602      	mov	r2, r0
  8001888:	460b      	mov	r3, r1
  800188a:	e9c7 2306 	strd	r2, r3, [r7, #24]
+
 #else
 	double intref_vol = TMPSENSOR_ADCREFVOL;
 #endif

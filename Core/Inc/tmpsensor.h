@@ -14,7 +14,7 @@
 
 /* Constant values BEGIN */
 #define TMPSENSOR_AVGSLOPE 2.5 /* mV/°C */
-#define TMPSENSOR_V25  0.76/* V (at 25 °C)  */
+#define TMPSENSOR_V25  0.76 /* V (at 25 °C)  */
 
 #define TMPSENSOR_ADCMAX 4095.0 /* 12-bit ADC maximum value (12^2)-1)  */
 #define TMPSENSOR_ADCREFVOL  3.3 /* Typical reference voltage, V  */

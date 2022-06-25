@@ -10,7 +10,9 @@
 double TMPSENSOR_getTemperature(uint16_t adc_sensor, uint16_t adc_intref){
 
 #if(TMPSENSOR_USE_INTREF)
+
 	double intref_vol = (TMPSENSOR_ADCMAX*TMPSENSOR_ADCVREFINT)/adc_intref;
+
 #else
 	double intref_vol = TMPSENSOR_ADCREFVOL;
 #endif

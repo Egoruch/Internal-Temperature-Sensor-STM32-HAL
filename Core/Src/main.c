@@ -42,7 +42,7 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-ADC_HandleTypeDef hadc1;
+ ADC_HandleTypeDef hadc1;
 DMA_HandleTypeDef hdma_adc1;
 
 TIM_HandleTypeDef htim3;
@@ -130,8 +130,10 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
 		if (Flg.ADCCMPLT) /* Conversion completed, do calculations */
 		{
+
 			/* Temperature Sensor ADC-value, Reference Voltage ADC-value (if use) */
 			Adc.IntSensTmp = TMPSENSOR_getTemperature(Adc.Raw[1], Adc.Raw[0]);
 
@@ -147,6 +149,7 @@ int main(void)
 
 			Flg.ADCCMPLT = 0; /* Nullify flag */
 		}
+
 
     /* USER CODE END WHILE */
 
@@ -284,7 +287,7 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 1 */
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 840-2;
+  htim3.Init.Prescaler = 840-1;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim3.Init.Period = 10000-1;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -386,6 +389,8 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
     if(hadc->Instance == ADC1) /* Check if the interrupt comes from ACD1 */
@@ -394,6 +399,9 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
     	Flg.ADCCMPLT = 255;
     }
 }
+
+
+
 /* USER CODE END 4 */
 
 /**
