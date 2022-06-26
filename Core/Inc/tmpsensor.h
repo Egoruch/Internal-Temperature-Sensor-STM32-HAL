@@ -18,7 +18,7 @@
 
 #define TMPSENSOR_ADCMAX 4095.0 /* 12-bit ADC maximum value (12^2)-1)  */
 #define TMPSENSOR_ADCREFVOL  3.3 /* Typical reference voltage, V  */
-#define TMPSENSOR_ADCVREFINT  1.2 /* Internal reference voltage, V  */
+#define TMPSENSOR_ADCVREFINT  1.21 /* Internal reference voltage, V  */
 /* Constant values END */
 
 
